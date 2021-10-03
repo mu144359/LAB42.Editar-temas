@@ -1,0 +1,67 @@
+---
+title: "Editar temas MD"
+author: "Selene Muñoz MD"
+date: "2/10/2021"
+output: html_document
+---
+Instalando paquete con los datos
+
+install.packages("gapminder")
+
+install.packages("ggplot2")
+
+Cargar librerías ggplot2 y gapminder
+```{r}
+library(ggplot2)
+library(gapminder)
+```
+
+Cargar datos a entorno
+```{r}
+data("gapminder")
+```
+
+Filtrando por año 2007
+```{r}
+gapminder2007 <- gapminder[gapminder$year == '2007', ]
+```
+
+Haciendo gráfica de puntos
+```{r}
+p1 <- ggplot(data = gapminder2007,
+             mapping = aes(x = gdpPercap,
+                           y = lifeExp,
+                           color = continent)) +
+  geom_point()
+```
+
+Ver gráfica p1
+```{r}
+p1
+```
+
+Temas básicos
+```{r}
+p1 + theme_bw()
+p1 + theme_minimal()
+```
+
+Más temas
+install.packages('ggthemes')
+
+Cargar librería ggthemes
+```{r}
+library(ggthemes)
+```
+
+Temas y colores
+```{r}
+p1 + theme_economist()+scale_color_economist()
+p1 + theme_excel_new()+scale_color_excel_new()
+p1 + theme_wsj()+scale_color_wsj()
+p1 + theme_dark()+scale_color_viridis_d()
+p1 + theme_test()+scale_color_tableau()
+p1 + theme_pander()+scale_color_pander()
+p1 + theme_calc()+scale_color_calc()
+```
+
